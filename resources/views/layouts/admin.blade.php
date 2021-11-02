@@ -1,823 +1,1066 @@
 <!DOCTYPE html>
-<html lang="zxx">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<html lang="en" dir="ltr">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Directory</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/css/bootstrap.min.css" />
-    <!-- themefy CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/themefy_icon/themify-icons.css" />
-    <!-- swiper slider CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/swiper_slider/css/swiper.min.css" />
-    <!-- select2 CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/select2/css/select2.min.css" />
-    <!-- select2 CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/niceselect/css/nice-select.css" />
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/owl_carousel/css/owl.carousel.css" />
-    <!-- gijgo css -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/gijgo/gijgo.min.css" />
-    <!-- font awesome CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/font_awesome/css/all.min.css" />
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/tagsinput/tagsinput.css" />
+    <title>Sleek - Admin Dashboard Template</title>
 
-    <!-- date picker -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/datepicker/date-picker.css" />
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
+          rel="stylesheet"/>
+    <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet"/>
 
-    <!-- datatable CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/datatable/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/datatable/css/responsive.dataTables.min.css" />
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/datatable/css/buttons.dataTables.min.css" />
-    <!-- text editor css -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/text_editor/summernote-bs4.css" />
-    <!-- morris css -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/morris/morris.css">
-    <!-- metarial icon css -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/vendors/material_icon/material-icons.css" />
+    <!-- PLUGINS CSS STYLE -->
+    <link href="{{assets('backend')}}/plugins/toaster/toastr.min.css" rel="stylesheet"/>
+    <link href="{{assets('backend')}}/plugins/nprogress/nprogress.css" rel="stylesheet"/>
+    <link href="{{assets('backend')}}/plugins/flag-icons/css/flag-icon.min.css" rel="stylesheet"/>
+    <link href="{{assets('backend')}}/plugins/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
+    <link href="{{assets('backend')}}/plugins/ladda/ladda.min.css" rel="stylesheet"/>
+    <link href="{{assets('backend')}}/plugins/select2/css/select2.min.css" rel="stylesheet"/>
+    <link href="{{assets('backend')}}/plugins/daterangepicker/daterangepicker.css" rel="stylesheet"/>
 
-    <!-- menu css  -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/css/metisMenu.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="{{asset('frontend')}}/css/style.css" />
-    <link rel="stylesheet" href="{{asset('frontend')}}/css/colors/default.css" id="colorSkinCSS">
+    <!-- SLEEK CSS -->
+    <link id="sleek-css" rel="stylesheet" href="{{assets('backend')}}/css/sleek.css"/>
+
+
+    <!-- FAVICON -->
+    <link href="{{assets('backend')}}/img/favicon.png" rel="shortcut icon"/>
+
+    <!--
+      HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{{assets('backend')}}/plugins/nprogress/nprogress.js"></script>
 </head>
-<body class="crm_body_bg">
 
 
+<body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
+<script>
+    NProgress.configure({showSpinner: false});
+    NProgress.start();
+</script>
 
-<!-- main content part here -->
+<div class="mobile-sticky-body-overlay"></div>
 
-<!-- sidebar  -->
-<!-- sidebar part here -->
-@include('layouts.admin_partials.sidebar')
-<!-- sidebar part end -->
-<!--/ sidebar  -->
+<div class="wrapper">
 
+    <!--
+====================================
+——— LEFT SIDEBAR WITH FOOTER
+=====================================
+-->
+   @include('layouts.admin_partials.sidebar')
 
-<section class="main_content dashboard_part">
-    <!-- menu  -->
-    <div class="container-fluid no-gutters">
-        <div class="row">
-            <div class="col-lg-12 p-0 ">
-                <div class="header_iner d-flex justify-content-between align-items-center">
-                    <div class="sidebar_icon d-lg-none">
-                        <i class="ti-menu"></i>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="main-header " id="header">
+            <nav class="navbar navbar-static-top navbar-expand-lg">
+                <!-- Sidebar toggle button -->
+                <button id="sidebar-toggler" class="sidebar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <!-- search form -->
+                <div class="search-form d-none d-lg-inline-block">
+                    <div class="input-group">
+                        <button type="button" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="mdi mdi-magnify"></i>
+                        </button>
+                        <input type="text" name="query" id="search-input" class="form-control"
+                               placeholder="'button', 'chart' etc."
+                               autofocus autocomplete="off"/>
                     </div>
-                    <div class="serach_field-area">
-                        <div class="search_inner">
-                            <form action="#">
-                                <div class="search_field">
-                                    <input type="text" placeholder="Search here..." >
-                                </div>
-                                <button type="submit"> <img src="img/icon/icon_search.svg" alt=""> </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="header_right d-flex justify-content-between align-items-center">
-                        <div class="header_notification_warp d-flex align-items-center">
-                            <li>
-                                <a class="bell_notification_clicker" href="#"> <img src="img/icon/bell.svg" alt="">
-                                    <span>04</span>
-                                </a>
-                                <!-- Menu_NOtification_Wrap  -->
-                                <div class="Menu_NOtification_Wrap">
-                                    <div class="notification_Header">
-                                        <h4>Notifications</h4>
-                                    </div>
-                                    <div class="Notification_body">
-                                        <!-- single_notify  -->
-                                        <div class="single_notify d-flex align-items-center">
-                                            <div class="notify_thumb">
-                                                <a href="#"><img src="img/staf/2.png" alt=""></a>
-                                            </div>
-                                            <div class="notify_content">
-                                                <a href="#"><h5>Cool Directory </h5></a>
-                                                <p>Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                        <!-- single_notify  -->
-                                        <div class="single_notify d-flex align-items-center">
-                                            <div class="notify_thumb">
-                                                <a href="#"><img src="img/staf/4.png" alt=""></a>
-                                            </div>
-                                            <div class="notify_content">
-                                                <a href="#"><h5>Awesome packages</h5></a>
-                                                <p>Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                        <!-- single_notify  -->
-                                        <div class="single_notify d-flex align-items-center">
-                                            <div class="notify_thumb">
-                                                <a href="#"><img src="img/staf/3.png" alt=""></a>
-                                            </div>
-                                            <div class="notify_content">
-                                                <a href="#"><h5>what a packages</h5></a>
-                                                <p>Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                        <!-- single_notify  -->
-                                        <div class="single_notify d-flex align-items-center">
-                                            <div class="notify_thumb">
-                                                <a href="#"><img src="img/staf/2.png" alt=""></a>
-                                            </div>
-                                            <div class="notify_content">
-                                                <a href="#"><h5>Cool Directory </h5></a>
-                                                <p>Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                        <!-- single_notify  -->
-                                        <div class="single_notify d-flex align-items-center">
-                                            <div class="notify_thumb">
-                                                <a href="#"><img src="img/staf/4.png" alt=""></a>
-                                            </div>
-                                            <div class="notify_content">
-                                                <a href="#"><h5>Awesome packages</h5></a>
-                                                <p>Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                        <!-- single_notify  -->
-                                        <div class="single_notify d-flex align-items-center">
-                                            <div class="notify_thumb">
-                                                <a href="#"><img src="img/staf/3.png" alt=""></a>
-                                            </div>
-                                            <div class="notify_content">
-                                                <a href="#"><h5>what a packages</h5></a>
-                                                <p>Lorem ipsum dolor sit amet</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="nofity_footer">
-                                        <div class="submit_button text-center pt_20">
-                                            <a href="#" class="btn_1">See More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ Menu_NOtification_Wrap  -->
-                            </li>
-                            <li>
-                                <a class="CHATBOX_open" href="#"> <img src="img/icon/msg.svg" alt="">  <span>01</span> </a>
-                            </li>
-                        </div>
-                        <div class="profile_info">
-                            <img src="img/client_img.png" alt="#">
-                            <div class="profile_info_iner">
-                                <div class="profile_author_name">
-                                    <p>Neurologist </p>
-                                    <h5>Dr. Robar Smith</h5>
-                                </div>
-                                <div class="profile_info_details">
-                                    <a href="#">My Profile </a>
-                                    <a href="#">Settings</a>
-                                    <a href="#">Log Out </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="search-results-container">
+                        <ul id="search-results"></ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--/ menu  -->
-    <div class="main_content_iner ">
-        <div class="container-fluid p-0 sm_padding_15px">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="dashboard_header mb_50">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="dashboard_header_title">
-                                    <h3> Directory Dashboard</h3>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="dashboard_breadcam text-right">
-                                    <p><a href="index-2.html">Dashboard</a> <i class="fas fa-caret-right"></i>   Address Book</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-xl-8">
-                    <div class="white_box mb_30">
-                        <div class="box_header">
-                            <div class="main-title">
-                                <h3 class="mb_25" >Monthly Income stats for November 2020</h3>
-                            </div>
-                            <div class="float-right d-none d-md-inline-block">
-                                <div class="btn-group mb-2">
-                                    <button type="button" class="btn btn-sm btn-light">Today</button>
-                                    <button type="button" class="btn btn-sm btn-light active">Weekly</button>
-                                    <button type="button" class="btn btn-sm btn-light">Monthly</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="line-column-chart2"></div>
-                        <div class="card_footer_white">
-                            <div class="row">
-                                <div class="col-sm-4 text-center">
-                                    <div class="d-inline-flex">
-                                        <h5 class="mr-2">$12,253</h5>
-                                        <div class="text-success">
-                                            <i class="fas fa-caret-up font-size-14 line-height-2 mr-2"> </i>2.2 %
-                                        </div>
-                                    </div>
-                                    <p class="text-muted text-truncate mb-0">This month</p>
-                                </div>
 
-                                <div class="col-sm-4 text-center">
-                                    <div class="mt-4 mt-sm-0">
-                                        <p class="mb-2 text-muted text-truncate"><i class="fas fa-circle text-primary mr-2 font-size-10 mr-1"></i> This Year :</p>
-                                        <div class="d-inline-flex align-items-center">
-                                            <h5 class="mb-0 mr-2">$ 34,254</h5>
-                                            <div class="text-success">
-                                                <i class="fas fa-caret-up font-size-14 line-height-2 mr-2"> </i>2.1 %
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 text-center">
-                                    <div class="mt-4 mt-sm-0">
-                                        <p class="mb-2 text-muted text-truncate"><i class="fas fa-circle text-success font-size-10 mr-1"></i> Previous Year :</p>
-                                        <div class="d-inline-flex align-items-center">
-                                            <h5 class="mb-0">$ 32,695</h5>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="navbar-right ">
+                    <ul class="nav navbar-nav">
+                        <!-- Github Link Button -->
+                        <li class="github-link mr-3">
+                            <a class="btn btn-outline-secondary btn-sm"
+                               href="https://github.com/tafcoder/sleek-dashboard" target="_blank">
+                                <span class="d-none d-md-inline-block mr-2">Source Code</span>
+                                <i class="mdi mdi-github-circle"></i>
+                            </a>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="list_counter_wrapper white_box mb_30 p-0 card_height_100">
-                        <div class="single_list_counter">
-                            <h3 class="deep_blue_2" ><span class="counter deep_blue_2 ">50</span> + </h3>
-                            <p>Total categories</p>
-                        </div>
-                        <div class="single_list_counter">
-                            <h3 class="deep_blue_2"><span class="counter deep_blue_2">100</span> + </h3>
-                            <p>Total Listing</p>
-                        </div>
-                        <div class="single_list_counter">
-                            <h3 class="deep_blue_2"><span class="counter deep_blue_2">20</span> + </h3>
-                            <p>Claimed Listing</p>
-                        </div>
-                        <div class="single_list_counter">
-                            <h3 class="deep_blue_2"><span class="counter deep_blue_2">10</span> + </h3>
-                            <p>Reported Listing </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Users according to packages</h3>
-                            </div>
-                        </div>
-                        <div class="QA_table ">
-                            <!-- table-responsive -->
-                            <table class="table lms_table_active2">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Package name</th>
-                                    <th scope="col">No. of users</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Free package</td>
-                                    <td>2556</td>
-                                </tr>
-                                <tr>
-                                    <td>Free package</td>
-                                    <td>2556</td>
-                                </tr>
-                                <tr>
-                                    <td>Free package</td>
-                                    <td>2556</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="white_box mb_30 card_height_100">
-                        <div class="box_header ">
-                            <div class="main-title">
-                                <h3 class="mb_25">Overview</h3>
-                            </div>
-                        </div>
-                        <div class="activity_progressbar">
-                            <div class="single_progressbar d-flex">
-                                <h6>Active Listings</h6>
-                                <div id="bar1" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="95"></span>
-                                </div>
-                            </div>
-                            <div class="single_progressbar d-flex">
-                                <h6>Claimed Listings</h6>
-                                <div id="bar2" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="75"></span>
-                                </div>
-                            </div>
-                            <div class="single_progressbar d-flex">
-                                <h6>Reported Listings</h6>
-                                <div id="bar3" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="55"></span>
-                                </div>
-                            </div>
-                            <div class="single_progressbar d-flex">
-                                <h6>Pending Listings</h6>
-                                <div id="bar4" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="25"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Web Visitor and trafic</h3>
-                            </div>
-                        </div>
-                        <div id="home-chart-03" style="height: 280px; position: relative;"></div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="white_box QA_section card_height_100 blud_card">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0 text_white">2400 + New Users</h3>
-                            </div>
-                        </div>
-                        <div class="content_user">
-                            <p>At vero eos et accusamus et iusto odio
-                                dignissimos ducimus</p>
-                            <a href="#" class="btn_2">Learn more</a>
-                            <img src="img/users_img.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Listings according to Category</h3>
-                            </div>
-                        </div>
-                        <div class="QA_table ">
-                            <!-- table-responsive -->
-                            <table class="table lms_table_active2">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Package name</th>
-                                    <th scope="col">No. of users</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Restaurant</td>
-                                    <td>2556</td>
-                                </tr>
-                                <tr>
-                                    <td>Hotel</td>
-                                    <td>25506</td>
-                                </tr>
-                                <tr>
-                                    <td>Apartment</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Salon</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Automobile</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Spa</td>
-                                    <td>25536</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Claimed Listings</h3>
-                            </div>
-                        </div>
-                        <div class="QA_table ">
-                            <!-- table-responsive -->
-                            <table class="table lms_table_active2">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Package name</th>
-                                    <th scope="col">No. of users</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Restaurant</td>
-                                    <td>2556</td>
-                                </tr>
-                                <tr>
-                                    <td>Hotel</td>
-                                    <td>25506</td>
-                                </tr>
-                                <tr>
-                                    <td>Apartment</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Salon</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Automobile</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Spa</td>
-                                    <td>25536</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Reported Listings</h3>
-                            </div>
-                        </div>
-                        <div class="QA_table ">
-                            <!-- table-responsive -->
-                            <table class="table lms_table_active2">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Package name</th>
-                                    <th scope="col">No. of users</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Restaurant</td>
-                                    <td>2556</td>
-                                </tr>
-                                <tr>
-                                    <td>Hotel</td>
-                                    <td>25506</td>
-                                </tr>
-                                <tr>
-                                    <td>Apartment</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Salon</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Automobile</td>
-                                    <td>25536</td>
-                                </tr>
-                                <tr>
-                                    <td>Spa</td>
-                                    <td>25536</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="white_box card_height_100">
-                        <div class="box_header">
-                            <div class="main-title">
-                                <h3 class="m-0">Recent Activity</h3>
-                            </div>
-                        </div>
-                        <div class="Activity_timeline">
-                            <ul>
+                        </li>
+                        <li class="dropdown notifications-menu">
+                            <button class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="mdi mdi-bell-outline"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">You have 5 notifications</li>
                                 <li>
-                                    <div class="activity_bell"></div>
-
-                                    <div class="timeLine_inner d-flex align-items-center">
-                                        <div class="activity_wrap">
-                                            <h6>5 min ago</h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                            </p>
-                                        </div>
-                                        <div class="notification_read_btn mb_10">
-                                            <a href="#" class="notification_btn">Read</a>
-                                        </div>
-                                    </div>
-
+                                    <a href="#">
+                                        <i class="mdi mdi-account-plus"></i> New user registered
+                                        <span class=" font-size-12 d-inline-block float-right"><i
+                                                class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div class="activity_bell"></div>
-
-                                    <div class="timeLine_inner d-flex align-items-center">
-                                        <div class="activity_wrap">
-                                            <h6>5 min ago</h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                            </p>
-                                        </div>
-                                        <div class="notification_read_btn mb_10">
-                                            <a href="#" class="notification_btn">Read</a>
-                                        </div>
-                                    </div>
-
+                                    <a href="#">
+                                        <i class="mdi mdi-account-remove"></i> User deleted
+                                        <span class=" font-size-12 d-inline-block float-right"><i
+                                                class="mdi mdi-clock-outline"></i> 07 AM</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div class="activity_bell"></div>
-
-                                    <div class="timeLine_inner d-flex align-items-center">
-                                        <div class="activity_wrap">
-                                            <h6>5 min ago</h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                            </p>
-                                        </div>
-                                        <div class="notification_read_btn mb_10">
-                                            <a href="#" class="notification_btn">Read</a>
-                                        </div>
-                                    </div>
-
+                                    <a href="#">
+                                        <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
+                                        <span class=" font-size-12 d-inline-block float-right"><i
+                                                class="mdi mdi-clock-outline"></i> 12 PM</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <div class="activity_bell"></div>
-
-                                    <div class="timeLine_inner d-flex align-items-center">
-                                        <div class="activity_wrap">
-                                            <h6>5 min ago</h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-                                            </p>
-                                        </div>
-                                        <div class="notification_read_btn mb_10">
-                                            <a href="#" class="notification_btn">Read</a>
-                                        </div>
-                                    </div>
-
+                                    <a href="#">
+                                        <i class="mdi mdi-account-supervisor"></i> New client
+                                        <span class=" font-size-12 d-inline-block float-right"><i
+                                                class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-server-network-off"></i> Server overloaded
+                                        <span class=" font-size-12 d-inline-block float-right"><i
+                                                class="mdi mdi-clock-outline"></i> 05 AM</span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <a class="text-center" href="#"> View All </a>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
+                        </li>
+                        <!-- User Account -->
+                        <li class="dropdown user-menu">
+                            <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                <img src="{{assets('backend')}}/img/user/user.png" class="user-image" alt="User Image"/>
+                                <span class="d-none d-lg-inline-block">Abdus Salam</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <!-- User image -->
+                                <li class="dropdown-header">
+                                    <img src="{{assets('backend')}}/img/user/user.png" class="img-circle" alt="User Image"/>
+                                    <div class="d-inline-block">
+                                        Abdus Salam <small class="pt-1">abdus@gmail.com</small>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="profile.html">
+                                        <i class="mdi mdi-account"></i> My Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="email-inbox.html">
+                                        <i class="mdi mdi-email"></i> Message
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+                                </li>
+                                <li>
+                                    <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
+                                </li>
+
+                                <li class="dropdown-footer">
+                                    <a href="signin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-lg-3">
-                    <div class="white_box QA_section card_height_100">
-                        <div class="box_header m-0">
-                            <div class="main-title">
-                                <h3 class="m-0">Device</h3>
+            </nav>
+
+        </header>
+
+        <div class="content-wrapper">
+            <div class="content">
+                <!-- Top Statistics -->
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card card-mini mb-4">
+                            <div class="card-body">
+                                <h2 class="mb-1">71,503</h2>
+                                <p>Online Signups</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="barChart"></canvas>
+                                </div>
                             </div>
                         </div>
-                        <div  id="bar-chart-6" class=""></div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="white_box">
-                        <div class="box_header">
-                            <div class="main-title">
-                                <h3 class="m-0">Browser</h3>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card card-mini  mb-4">
+                            <div class="card-body">
+                                <h2 class="mb-1">9,503</h2>
+                                <p>New Visitors Today</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="dual-line"></canvas>
+                                </div>
                             </div>
                         </div>
-                        <div class="casnvas_box">
-                            <canvas height="210" width="210" id="canvasDoughnut"></canvas>
-                        </div>
-                        <div class="legend_style legend_style_grid mt_10px">
-                            <li class="d-block"> <span style="background-color: #525CE5;"></span>Chrome</li>
-                            <li class="d-block"> <span style="background-color: #9C52FD;"></span> Mojila</li>
-                            <li class="d-block"> <span style="background-color: #3B76EF"></span> Safari</li>
-                            <li class="d-block"> <span style="background-color:#00BFBF;"></span> Opera</li>
-                            <li class="d-block"> <span style="background-color:#FFA70B;"></span> Microsoft Edg</li>
-                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- footer part -->
-    <div class="footer_part">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer_iner text-center">
-                        <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- main content part end -->
-
-<!-- ### CHAT_MESSAGE_BOX   ### -->
-
-<div class="CHAT_MESSAGE_POPUPBOX">
-    <div class="CHAT_POPUP_HEADER">
-        <div class="MSEESAGE_CHATBOX_CLOSE">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.09939 5.98831L11.772 10.661C12.076 10.965 12.076 11.4564 11.772 11.7603C11.468 12.0643 10.9766 12.0643 10.6726 11.7603L5.99994 7.08762L1.32737 11.7603C1.02329 12.0643 0.532002 12.0643 0.228062 11.7603C-0.0760207 11.4564 -0.0760207 10.965 0.228062 10.661L4.90063 5.98831L0.228062 1.3156C-0.0760207 1.01166 -0.0760207 0.520226 0.228062 0.216286C0.379534 0.0646715 0.578697 -0.0114918 0.777717 -0.0114918C0.976738 -0.0114918 1.17576 0.0646715 1.32737 0.216286L5.99994 4.889L10.6726 0.216286C10.8243 0.0646715 11.0233 -0.0114918 11.2223 -0.0114918C11.4213 -0.0114918 11.6203 0.0646715 11.772 0.216286C12.076 0.520226 12.076 1.01166 11.772 1.3156L7.09939 5.98831Z" fill="white"/>
-            </svg>
-
-        </div>
-        <h3>Chat with us</h3>
-        <div class="Chat_Listed_member">
-            <ul>
-                <li>
-                    <a href="#">
-                        <div class="member_thumb">
-                            <img src="img/staf/1.png" alt="">
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="member_thumb">
-                            <img src="img/staf/2.png" alt="">
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="member_thumb">
-                            <img src="img/staf/3.png" alt="">
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="member_thumb">
-                            <img src="img/staf/4.png" alt="">
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="member_thumb">
-                            <img src="img/staf/5.png" alt="">
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="member_thumb">
-                            <div class="more_member_count">
-                                <span>90+</span>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card card-mini mb-4">
+                            <div class="card-body">
+                                <h2 class="mb-1">71,503</h2>
+                                <p>Monthly Total Order</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="area-chart"></canvas>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="CHAT_POPUP_BODY">
-        <p class="mesaged_send_date">
-            Sunday, 12 January
-        </p>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="card card-mini mb-4">
+                            <div class="card-body">
+                                <h2 class="mb-1">9,503</h2>
+                                <p>Total Revenue This Year</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="line"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="CHATING_SENDER">
-            <div class="SMS_thumb">
-                <img src="img/staf/1.png" alt="">
-            </div>
-            <div class="SEND_SMS_VIEW">
-                <P>Hi! Welcome .
-                    How can I help you?</P>
-            </div>
-        </div>
 
-        <div class="CHATING_SENDER CHATING_RECEIVEr">
+                <div class="row">
+                    <div class="col-xl-8 col-md-12">
+                        <!-- Sales Graph -->
+                        <div class="card card-default" data-scroll-height="675">
+                            <div class="card-header">
+                                <h2>Sales Of The Year</h2>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="linechart" class="chartjs"></canvas>
+                            </div>
+                            <div class="card-footer d-flex flex-wrap bg-white p-0">
+                                <div class="col-6 px-0">
+                                    <div class="text-center p-4">
+                                        <h4>$6,308</h4>
+                                        <p class="mt-2">Total orders of this year</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 px-0">
+                                    <div class="text-center p-4 border-left">
+                                        <h4>$70,506</h4>
+                                        <p class="mt-2">Total revenue of this year</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-12">
+                        <!-- Doughnut Chart -->
+                        <div class="card card-default" data-scroll-height="675">
+                            <div class="card-header justify-content-center">
+                                <h2>Orders Overview</h2>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="doChart"></canvas>
+                            </div>
+                            <a href="#" class="pb-5 d-block text-center text-muted"><i
+                                    class="mdi mdi-download mr-2"></i> Download overall report</a>
+                            <div class="card-footer d-flex flex-wrap bg-white p-0">
+                                <div class="col-6">
+                                    <div class="py-4 px-4">
+                                        <ul class="d-flex flex-column justify-content-between">
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                                style="color: #4c84ff"></i>Order Completed
+                                            </li>
+                                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                   style="color: #80e1c1 "></i>Order Unpaid
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 border-left">
+                                    <div class="py-4 px-4 ">
+                                        <ul class="d-flex flex-column justify-content-between">
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                                style="color: #8061ef"></i>Order Pending
+                                            </li>
+                                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                   style="color: #ffa128"></i>Order Canceled
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="SEND_SMS_VIEW">
-                <P>Hello</P>
-            </div>
-            <div class="SMS_thumb">
-                <img src="img/staf/1.png" alt="">
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-12">
 
-    </div>
-    <div class="CHAT_POPUP_BOTTOM">
-        <div class="chat_input_box d-flex align-items-center">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Write your message" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn " type="button">
-                        <!-- svg      -->
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z" fill="#707DB7"/>
-                        </svg>
+                        <!-- Polar and Radar Chart -->
+                        <div class="card card-default">
+                            <div class="card-header justify-content-center">
+                                <h2>Sales Overview</h2>
+                            </div>
+                            <div class="card-body pt-0">
+                                <ul class="nav nav-pills mb-5 mt-5 nav-style-fill nav-justified" id="pills-tab"
+                                    role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+                                           href="#pills-home" role="tab" aria-controls="pills-home"
+                                           aria-selected="true">Sales Status</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+                                           href="#pills-profile" role="tab" aria-controls="pills-profile"
+                                           aria-selected="false">Monthly Sales</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                         aria-labelledby="pills-home-tab">
+                                        <canvas id="polar"></canvas>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                         aria-labelledby="pills-profile-tab">
+                                        <canvas id="radar"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <!-- svg      -->
-                    </button>
-                    <button class="btn" type="button">
-                        <!-- svg  -->
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11 0.289062C4.92455 0.289062 0 5.08402 0 10.9996C0 16.9152 4.92455 21.7101 11 21.7101C17.0755 21.7101 22 16.9145 22 10.9996C22 5.08472 17.0755 0.289062 11 0.289062ZM11 20.3713C5.68423 20.3713 1.375 16.1755 1.375 10.9996C1.375 5.82371 5.68423 1.62788 11 1.62788C16.3158 1.62788 20.625 5.82371 20.625 10.9996C20.625 16.1755 16.3158 20.3713 11 20.3713ZM15.125 10.3302H11.6875V6.98314C11.6875 6.61363 11.3795 6.31373 11 6.31373C10.6205 6.31373 10.3125 6.61363 10.3125 6.98314V10.3302H6.875C6.4955 10.3302 6.1875 10.6301 6.1875 10.9996C6.1875 11.3691 6.4955 11.669 6.875 11.669H10.3125V15.016C10.3125 15.3855 10.6205 15.6854 11 15.6854C11.3795 15.6854 11.6875 15.3855 11.6875 15.016V11.669H15.125C15.5045 11.669 15.8125 11.3691 15.8125 10.9996C15.8125 10.6301 15.5045 10.3302 15.125 10.3302Z" fill="#707DB7"/>
-                        </svg>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12">
+                        <!-- Top Sell Table -->
+                        <div class="card card-table-border-none" data-scroll-height="550">
+                            <div class="card-header justify-content-between">
+                                <h2>Sold by Units</h2>
+                                <div>
+                                    <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i>
+                                    </button>
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                           id="dropdown-units" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-units">
+                                            <li class="dropdown-item"><a href="#">Action</a></li>
+                                            <li class="dropdown-item"><a href="#">Another action</a></li>
+                                            <li class="dropdown-item"><a href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body slim-scroll py-0">
+                                <table class="table ">
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-dark">Backpack</td>
+                                        <td class="text-center">9</td>
+                                        <td class="text-right">33% <i
+                                                class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-dark">T-Shirt</td>
+                                        <td class="text-center">6</td>
+                                        <td class="text-right">150% <i
+                                                class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-dark">Coat</td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-right">50% <i
+                                                class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-dark">Necklace</td>
+                                        <td class="text-center">7</td>
+                                        <td class="text-right">150% <i
+                                                class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-dark">Jeans Pant</td>
+                                        <td class="text-center">10</td>
+                                        <td class="text-right">300% <i
+                                                class="mdi mdi-arrow-down-bold text-danger pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-dark">Shoes</td>
+                                        <td class="text-center">5</td>
+                                        <td class="text-right">100% <i
+                                                class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-dark">T-Shirt</td>
+                                        <td class="text-center">6</td>
+                                        <td class="text-right">150% <i
+                                                class="mdi mdi-arrow-up-bold text-success pl-1 font-size-12"></i></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
 
-                        <!-- svg  -->
-                        <input type="file">
-                    </button>
+                            </div>
+                            <div class="card-footer bg-white py-4">
+                                <a href="#" class="btn-link py-3 text-uppercase">View Report</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-12">
+                        <!-- Notification Table -->
+                        <div class="card card-default" data-scroll-height="550">
+                            <div class="card-header justify-content-between ">
+                                <h2>Latest Notifications</h2>
+                                <div>
+                                    <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i>
+                                    </button>
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                           id="dropdown-notification" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-notification">
+                                            <li class="dropdown-item"><a href="#">Action</a></li>
+                                            <li class="dropdown-item"><a href="#">Another action</a></li>
+                                            <li class="dropdown-item"><a href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body slim-scroll">
+                                <div class="media pb-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
+                                        <i class="mdi mdi-cart-outline font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3 ">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New Order</a>
+                                        <p>Selena has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                </div>
+
+                                <div class="media py-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-success text-white">
+                                        <i class="mdi mdi-email-outline font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New Enquiry</a>
+                                        <p>Phileine has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 9 AM</span>
+                                </div>
+
+
+                                <div class="media py-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+                                        <i class="mdi mdi-stack-exchange font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="#">Support Ticket</a>
+                                        <p>Emma has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                </div>
+
+                                <div class="media py-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-primary text-white">
+                                        <i class="mdi mdi-cart-outline font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New order</a>
+                                        <p>Ryan has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                </div>
+
+                                <div class="media py-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-info text-white">
+                                        <i class="mdi mdi-calendar-blank font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="">Comapny Meetup</a>
+                                        <p>Phileine has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                </div>
+
+                                <div class="media py-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-warning text-white">
+                                        <i class="mdi mdi-stack-exchange font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="#">Support Ticket</a>
+                                        <p>Emma has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                                </div>
+
+                                <div class="media py-3 align-items-center justify-content-between">
+                                    <div
+                                        class="d-flex rounded-circle align-items-center justify-content-center mr-3 media-icon iconbox-45 bg-success text-white">
+                                        <i class="mdi mdi-email-outline font-size-20"></i>
+                                    </div>
+                                    <div class="media-body pr-3">
+                                        <a class="mt-0 mb-1 font-size-15 text-dark" href="#">New Enquiry</a>
+                                        <p>Phileine has placed an new order</p>
+                                    </div>
+                                    <span class=" font-size-12 d-inline-block"><i class="mdi mdi-clock-outline"></i> 9 AM</span>
+                                </div>
+
+                            </div>
+                            <div class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Recent Order Table -->
+                        <div class="card card-table-border-none" id="recent-orders">
+                            <div class="card-header justify-content-between">
+                                <h2>Recent Orders</h2>
+                                <div class="date-range-report ">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 pb-5">
+                                <table class="table card-table table-responsive table-responsive-large"
+                                       style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Product Name</th>
+                                        <th class="d-none d-md-table-cell">Units</th>
+                                        <th class="d-none d-md-table-cell">Order Date</th>
+                                        <th class="d-none d-md-table-cell">Order Cost</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>24541</td>
+                                        <td>
+                                            <a class="text-dark" href=""> Coach Swagger</a>
+                                        </td>
+                                        <td class="d-none d-md-table-cell">1 Unit</td>
+                                        <td class="d-none d-md-table-cell">Oct 20, 2018</td>
+                                        <td class="d-none d-md-table-cell">$230</td>
+                                        <td>
+                                            <span class="badge badge-success">Completed</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown show d-inline-block widget-dropdown">
+                                                <a class="dropdown-toggle icon-burger-mini" href="" role="button"
+                                                   id="dropdown-recent-order1" data-toggle="dropdown"
+                                                   aria-haspopup="true" aria-expanded="false" data-display="static"></a>
+                                                <ul class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdown-recent-order1">
+                                                    <li class="dropdown-item">
+                                                        <a href="#">View</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">Remove</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>24541</td>
+                                        <td>
+                                            <a class="text-dark" href=""> Toddler Shoes, Gucci Watch</a>
+                                        </td>
+                                        <td class="d-none d-md-table-cell">2 Units</td>
+                                        <td class="d-none d-md-table-cell">Nov 15, 2018</td>
+                                        <td class="d-none d-md-table-cell">$550</td>
+                                        <td>
+                                            <span class="badge badge-warning">Delayed</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown show d-inline-block widget-dropdown">
+                                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                   id="dropdown-recent-order2" data-toggle="dropdown"
+                                                   aria-haspopup="true" aria-expanded="false" data-display="static"></a>
+                                                <ul class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdown-recent-order2">
+                                                    <li class="dropdown-item">
+                                                        <a href="#">View</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">Remove</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>24541</td>
+                                        <td>
+                                            <a class="text-dark" href=""> Hat Black Suits</a>
+                                        </td>
+                                        <td class="d-none d-md-table-cell">1 Unit</td>
+                                        <td class="d-none d-md-table-cell">Nov 18, 2018</td>
+                                        <td class="d-none d-md-table-cell">$325</td>
+                                        <td>
+                                            <span class="badge badge-warning">On Hold</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown show d-inline-block widget-dropdown">
+                                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                   id="dropdown-recent-order3" data-toggle="dropdown"
+                                                   aria-haspopup="true"
+                                                   aria-expanded="false" data-display="static"></a>
+                                                <ul class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdown-recent-order3">
+                                                    <li class="dropdown-item">
+                                                        <a href="#">View</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">Remove</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>24541</td>
+                                        <td>
+                                            <a class="text-dark" href=""> Backpack Gents, Swimming Cap Slin</a>
+                                        </td>
+                                        <td class="d-none d-md-table-cell">5 Units</td>
+                                        <td class="d-none d-md-table-cell">Dec 13, 2018</td>
+                                        <td class="d-none d-md-table-cell">$200</td>
+                                        <td>
+                                            <span class="badge badge-success">Completed</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown show d-inline-block widget-dropdown">
+                                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                   id="dropdown-recent-order4" data-toggle="dropdown"
+                                                   aria-haspopup="true" aria-expanded="false" data-display="static"></a>
+                                                <ul class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdown-recent-order4">
+                                                    <li class="dropdown-item">
+                                                        <a href="#">View</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">Remove</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>24541</td>
+                                        <td>
+                                            <a class="text-dark" href=""> Speed 500 Ignite</a>
+                                        </td>
+                                        <td class="d-none d-md-table-cell">1 Unit</td>
+                                        <td class="d-none d-md-table-cell">Dec 23, 2018</td>
+                                        <td class="d-none d-md-table-cell">$150</td>
+                                        <td>
+                                            <span class="badge badge-danger">Cancelled</span>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="dropdown show d-inline-block widget-dropdown">
+                                                <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                   id="dropdown-recent-order5" data-toggle="dropdown"
+                                                   aria-haspopup="true"
+                                                   aria-expanded="false" data-display="static"></a>
+                                                <ul class="dropdown-menu dropdown-menu-right"
+                                                    aria-labelledby="dropdown-recent-order5">
+                                                    <li class="dropdown-item">
+                                                        <a href="#">View</a>
+                                                    </li>
+                                                    <li class="dropdown-item">
+                                                        <a href="#">Remove</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <!-- To Do list -->
+                        <div class="card card-default todo-table" id="todo" data-scroll-height="550">
+                            <div class="card-header justify-content-between">
+                                <h2>To Do List</h2>
+                                <a class="btn btn-primary btn-pill" id="add-task" href="#" role="button"> Add task </a>
+                            </div>
+                            <div class="card-body slim-scroll">
+                                <div class="todo-single-item d-none" id="todo-input">
+                                    <form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Todo" autofocus>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="todo-list" id="todo-list">
+                                    <div class="todo-single-item d-flex flex-row justify-content-between finished">
+                                        <i class="mdi"></i>
+                                        <span>Finish Dashboard UI Kit update</span>
+                                        <span class="badge badge-primary">Finished</span>
+                                    </div>
+                                    <div class="todo-single-item d-flex flex-row justify-content-between current">
+                                        <i class="mdi"></i>
+                                        <span>Create new prototype for the landing page</span>
+                                        <span class="badge badge-primary">Today</span>
+                                    </div>
+                                    <div class="todo-single-item d-flex flex-row justify-content-between ">
+                                        <i class="mdi"></i>
+                                        <span> Add new Google Analytics code to all main files </span>
+                                        <span class="badge badge-danger">Yesterday</span>
+                                    </div>
+
+                                    <div class="todo-single-item d-flex flex-row justify-content-between ">
+                                        <i class="mdi"></i>
+                                        <span>Update parallax scroll on team page</span>
+                                        <span class="badge badge-success">Dec 15, 2018</span>
+                                    </div>
+
+                                    <div class="todo-single-item d-flex flex-row justify-content-between ">
+                                        <i class="mdi"></i>
+                                        <span>Update parallax scroll on team page</span>
+                                        <span class="badge badge-success">Dec 15, 2018</span>
+                                    </div>
+                                    <div class="todo-single-item d-flex flex-row justify-content-between ">
+                                        <i class="mdi"></i>
+                                        <span>Create online customer list book</span>
+                                        <span class="badge badge-success">Dec 15, 2018</span>
+                                    </div>
+                                    <div class="todo-single-item d-flex flex-row justify-content-between ">
+                                        <i class="mdi"></i>
+                                        <span>Lorem ipsum dolor sit amet, consectetur.</span>
+                                        <span class="badge badge-success">Dec 15, 2018</span>
+                                    </div>
+
+                                    <div class="todo-single-item d-flex flex-row justify-content-between mb-1">
+                                        <i class="mdi"></i>
+                                        <span>Update parallax scroll on team page</span>
+                                        <span class="badge badge-success">Dec 15, 2018</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <!-- area chart -->
+                        <div class="card card-default">
+                            <div class="card-header d-block d-md-flex justify-content-between">
+                                <h2>World Wide Customer </h2>
+                                <div class="dropdown show d-inline-block widget-dropdown ml-auto">
+                                    <a class="dropdown-toggle" href="#" role="button" id="world-dropdown"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                       data-display="static">
+                                        World Wide
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="world-dropdown">
+                                        <li class="dropdown-item"><a href="#">Continetal chart</a></li>
+                                        <li class="dropdown-item"><a href="#">Sub-continental</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body vector-map-world">
+                                <div id="world" style="height: 100%; width: 100%;"></div>
+                            </div>
+                            <div class="card-footer d-flex flex-wrap bg-white p-0">
+                                <div class="col-6">
+                                    <div class="p-4">
+                                        <ul class="d-flex flex-column justify-content-between">
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                                style="color: #29cc97"></i>America <span
+                                                    class="float-right">5k</span></li>
+                                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                   style="color: #4c84ff "></i>Australia <span
+                                                    class="float-right">3k</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-4 border-left">
+                                        <ul class="d-flex flex-column justify-content-between">
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                                style="color: #ffa128"></i>Europe <span
+                                                    class="float-right">4k</span></li>
+                                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                   style="color: #fe5461"></i>Africa <span class="float-right">2k</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-5">
+                        <!-- New Customers -->
+                        <div class="card card-table-border-none" data-scroll-height="580">
+                            <div class="card-header justify-content-between ">
+                                <h2>New Customers</h2>
+                                <div>
+                                    <button class="text-black-50 mr-2 font-size-20">
+                                        <i class="mdi mdi-cached"></i>
+                                    </button>
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                           id="dropdown-customar" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static">
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-customar">
+                                            <li class="dropdown-item"><a href="#">Action</a></li>
+                                            <li class="dropdown-item"><a href="#">Another action</a></li>
+                                            <li class="dropdown-item"><a href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <table class="table ">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-image mr-3 rounded-circle">
+                                                    <a href="profile.html"><img class="rounded-circle w-45"
+                                                                                src="{{assets('backend')}}/img/user/u1.jpg"
+                                                                                alt="customer image"></a>
+                                                </div>
+                                                <div class="media-body align-self-center">
+                                                    <a href="profile.html"><h6
+                                                            class="mt-0 text-dark font-weight-medium">Selena Wagner</h6>
+                                                    </a>
+                                                    <small>@selena.oi</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>2 Orders</td>
+                                        <td class="text-dark d-none d-md-block">$150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-image mr-3 rounded-circle">
+                                                    <a href="profile.html"><img class="rounded-circle w-45"
+                                                                                src="{{assets('backend')}}/img/user/u2.jpg"
+                                                                                alt="customer image"></a>
+                                                </div>
+                                                <div class="media-body align-self-center">
+                                                    <a href="profile.html"><h6
+                                                            class="mt-0 text-dark font-weight-medium">Walter Reuter</h6>
+                                                    </a>
+                                                    <small>@walter.me</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>5 Orders</td>
+                                        <td class="text-dark d-none d-md-block">$200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-image mr-3 rounded-circle">
+                                                    <a href="profile.html"><img class="rounded-circle w-45"
+                                                                                src="{{assets('backend')}}/img/user/u3.jpg"
+                                                                                alt="customer image"></a>
+                                                </div>
+                                                <div class="media-body align-self-center">
+                                                    <a href="profile.html"><h6
+                                                            class="mt-0 text-dark font-weight-medium">Larissa
+                                                            Gebhardt</h6></a>
+                                                    <small>@larissa.gb</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>1 Order</td>
+                                        <td class="text-dark d-none d-md-block">$50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-image mr-3 rounded-circle">
+                                                    <a href="profile.html"><img class="rounded-circle w-45"
+                                                                                src="{{assets('backend')}}/img/user/u4.jpg"
+                                                                                alt="customer image"></a>
+                                                </div>
+                                                <div class="media-body align-self-center">
+                                                    <a href="profile.html"><h6
+                                                            class="mt-0 text-dark font-weight-medium">Albrecht
+                                                            Straub</h6></a>
+                                                    <small>@albrech.as</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>2 Orders</td>
+                                        <td class="text-dark d-none d-md-block">$100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-image mr-3 rounded-circle">
+                                                    <a href="profile.html"><img class="rounded-circle w-45"
+                                                                                src="{{assets('backend')}}/img/user/u5.jpg"
+                                                                                alt="customer image"></a>
+                                                </div>
+                                                <div class="media-body align-self-center">
+                                                    <a href="profile.html"><h6
+                                                            class="mt-0 text-dark font-weight-medium">Leopold Ebert</h6>
+                                                    </a>
+                                                    <small>@leopold.et</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>1 Order</td>
+                                        <td class="text-dark d-none d-md-block">$60</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7">
+                        <!-- Top Products -->
+                        <div class="card card-default" data-scroll-height="580">
+                            <div class="card-header justify-content-between mb-4">
+                                <h2>Top Products</h2>
+                                <div>
+                                    <button class="text-black-50 mr-2 font-size-20"><i class="mdi mdi-cached"></i>
+                                    </button>
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                           id="dropdown-product" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static">
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-product">
+                                            <li class="dropdown-item"><a href="#">Update Data</a></li>
+                                            <li class="dropdown-item"><a href="#">Detailed Log</a></li>
+                                            <li class="dropdown-item"><a href="#">Statistics</a></li>
+                                            <li class="dropdown-item"><a href="#">Clear Data</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body py-0">
+                                <div class="media d-flex mb-5">
+                                    <div class="media-image align-self-center mr-3 rounded">
+                                        <a href="#"><img src="{{assets('backend')}}/img/products/p1.jpg" alt="customer image"></a>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> Coach Swagger</h6>
+                                        </a>
+                                        <p class="float-md-right"><span class="text-dark mr-2">20</span>Sales</p>
+                                        <p class="d-none d-md-block">Statement belting with double-turnlock hardware
+                                            adds “swagger” to a simple.</p>
+                                        <p class="mb-0">
+                                            <del>$300</del>
+                                            <span class="text-dark ml-3">$250</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="media d-flex mb-5">
+                                    <div class="media-image align-self-center mr-3 rounded">
+                                        <a href="#"><img src="{{assets('backend')}}/img/products/p2.jpg" alt="customer image"></a>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> Coach Swagger</h6>
+                                        </a>
+                                        <p class="float-md-right"><span class="text-dark mr-2">20</span>Sales</p>
+                                        <p class="d-none d-md-block">Statement belting with double-turnlock hardware
+                                            adds “swagger” to a simple.</p>
+                                        <p class="mb-0">
+                                            <del>$300</del>
+                                            <span class="text-dark ml-3">$250</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="media d-flex mb-5">
+                                    <div class="media-image align-self-center mr-3 rounded">
+                                        <a href="#"><img src="{{assets('backend')}}/img/products/p3.jpg" alt="customer image"></a>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> Gucci Watch</h6></a>
+                                        <p class="float-md-right"><span class="text-dark mr-2">10</span>Sales</p>
+                                        <p class="d-none d-md-block">Statement belting with double-turnlock hardware
+                                            adds “swagger” to a simple.</p>
+                                        <p class="mb-0">
+                                            <del>$300</del>
+                                            <span class="text-dark ml-3">$50</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+        <footer class="footer mt-auto">
+            <div class="copyright bg-white">
+                <p>
+                    &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
+                    <a
+                        class="text-primary"
+                        href="http://www.iamabdus.com/"
+                        target="_blank"
+                    >Abdus</a
+                    >.
+                </p>
+            </div>
+            <script>
+                var d = new Date();
+                var year = d.getFullYear();
+                document.getElementById("copy-year").innerHTML = year;
+            </script>
+        </footer>
+
     </div>
 </div>
 
-<!--/### CHAT_MESSAGE_BOX  ### -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
+<script src="{{assets('backend')}}/plugins/jquery/jquery.min.js"></script>
+<script src="{{assets('backend')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{assets('backend')}}/plugins/toaster/toastr.min.js"></script>
+<script src="{{assets('backend')}}/plugins/slimscrollbar/jquery.slimscroll.min.js"></script>
+<script src="{{assets('backend')}}/plugins/charts/Chart.min.js"></script>
+<script src="{{assets('backend')}}/plugins/ladda/spin.min.js"></script>
+<script src="{{assets('backend')}}/plugins/ladda/ladda.min.js"></script>
+<script src="{{assets('backend')}}/plugins/jquery-mask-input/jquery.mask.min.js"></script>
+<script src="{{assets('backend')}}/plugins/select2/js/select2.min.js"></script>
+<script src="{{assets('backend')}}/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+<script src="{{assets('backend')}}/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
+<script src="{{assets('backend')}}/plugins/daterangepicker/moment.min.js"></script>
+<script src="{{assets('backend')}}/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="{{assets('backend')}}/plugins/jekyll-search.min.js"></script>
+<script src="{{assets('backend')}}/js/sleek.js"></script>
+<script src="{{assets('backend')}}/js/chart.js"></script>
+<script src="{{assets('backend')}}/js/date-range.js"></script>
+<script src="{{assets('backend')}}/js/map.js"></script>
+<script src="{{assets('backend')}}/js/custom.js"></script>
 
-
-<!-- footer  -->
-<!-- jquery slim -->
-<script src="{{asset('frontend')}}/js/jquery-3.4.1.min.js"></script>
-<!-- popper js -->
-<script src="{{asset('frontend')}}/js/popper.min.js"></script>
-<!-- bootstarp js -->
-<script src="{{asset('frontend')}}/js/bootstrap.min.js"></script>
-<!-- sidebar menu  -->
-<script src="{{asset('frontend')}}/js/metisMenu.js"></script>
-<!-- waypoints js -->
-<script src="{{asset('frontend')}}/vendors/count_up/jquery.waypoints.min.js"></script>
-<!-- waypoints js -->
-<script src="{{asset('frontend')}}/vendors/chartlist/Chart.min.js"></script>
-<!-- counterup js -->
-<script src="{{asset('frontend')}}/vendors/count_up/jquery.counterup.min.js"></script>
-<!-- swiper slider js -->
-<script src="{{asset('frontend')}}/vendors/swiper_slider/js/swiper.min.js"></script>
-<!-- nice select -->
-<script src="{{asset('frontend')}}/vendors/niceselect/js/jquery.nice-select.min.js"></script>
-<!-- owl carousel -->
-<script src="{{asset('frontend')}}/vendors/owl_carousel/js/owl.carousel.min.js"></script>
-<!-- gijgo css -->
-<script src="{{asset('frontend')}}/vendors/gijgo/gijgo.min.js"></script>
-<!-- responsive table -->
-<script src="{{asset('frontend')}}/vendors/datatable/js/jquery.dataTables.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/dataTables.responsive.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/dataTables.buttons.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/buttons.flash.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/jszip.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/pdfmake.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/vfs_fonts.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/buttons.html5.min.js"></script>
-<script src="{{asset('frontend')}}/vendors/datatable/js/buttons.print.min.js"></script>
-
-<!-- date picker  -->
-<script src="{{asset('frontend')}}/vendors/datepicker/datepicker.js"></script>
-<script src="{{asset('frontend')}}/vendors/datepicker/datepicker.en.js"></script>
-<script src="{{asset('frontend')}}/vendors/datepicker/datepicker.custom.js"></script>
-
-<script src="{{asset('frontend')}}/js/chart.min.js"></script>
-<!-- progressbar js -->
-<script src="{{asset('frontend')}}/vendors/progressbar/jquery.barfiller.js"></script>
-<!-- tag input -->
-<script src="{{asset('frontend')}}/vendors/tagsinput/tagsinput.js"></script>
-<!-- text editor js -->
-<script src="{{asset('frontend')}}/vendors/text_editor/summernote-bs4.js"></script>
-<script src="{{asset('frontend')}}/vendors/am_chart/amcharts.js"></script>
-
-<script src="{{asset('frontend')}}/vendors/apex_chart/apexcharts.js"></script>
-<script src="{{asset('frontend')}}/vendors/apex_chart/apex_realestate.js"></script>
-<!-- <script src="vendors/apex_chart/default.js"></script> -->
-
-<script src="{{asset('frontend')}}/vendors/chart_am/core.js"></script>
-<script src="{{asset('frontend')}}/vendors/chart_am/charts.js"></script>
-<script src="{{asset('frontend')}}/vendors/chart_am/animated.js"></script>
-<script src="{{asset('frontend')}}/vendors/chart_am/kelly.js"></script>
-<script src="{{asset('frontend')}}/vendors/chart_am/chart-custom.js"></script>
-<!-- custom js -->
-<script src="js/custom.js"></script>
-
-<script src="{{asset('frontend')}}/vendors/apex_chart/bar_active_1.js"></script>
-<script src="{{asset('frontend')}}/vendors/apex_chart/apex_chart_list.js"></script>
 </body>
-
-<!-- Mirrored from demo.dashboardpack.com/directory-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Oct 2021 06:42:27 GMT -->
 </html>
