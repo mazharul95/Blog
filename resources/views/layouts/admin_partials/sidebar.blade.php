@@ -55,7 +55,7 @@
                        data-target="#documentation"
                        aria-expanded="false" aria-controls="documentation">
                         <i class="mdi mdi-book-open-page-variant"></i>
-                        <span class="nav-text">Home</span> </a>
+                        <span class="nav-text" href="">Home</span> </a>
                 </li>
                 <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"

@@ -8,5 +8,4 @@ Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'admin'])
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'is_admin'], function () {
     Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
-
 });

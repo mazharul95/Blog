@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+route::get('/user',function ()
+{
+    $users =App\Models\User::with('address')->get();
+    return view('layouts.users.index',compact('users'));
+
+
+
+});
