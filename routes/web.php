@@ -23,9 +23,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 route::get('/user',function ()
 {
-    $users =App\Models\User::with('address')->get();
-    return view('layouts.users.index',compact('users'));
 
+    $users =App\Models\User::with('addresses')->get();
+    /*$users[0]->addresses()->create ([
+        'country'=>'nepal'
+
+    ]);*/
+
+    return view('layouts.users.index',compact('users'));
 
 
 });
